@@ -66,6 +66,7 @@ User Input: Research Topic
                ↓
     Professional Report + Confidence Score
 ```
+<img width="134" height="630" alt="architecture" src="https://github.com/user-attachments/assets/d0751d5d-0f62-456c-8ef0-e2fb3ede1958" />
 
 ---
 
