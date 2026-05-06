@@ -236,5 +236,9 @@ multi_agent_research/
 - Human-in-the-loop approval before Writer Agent runs
 
 ---
+#Demo Images
+<img width="1366" height="2120" alt="screencapture-localhost-8501-2026-05-05-15_09_37" src="https://github.com/user-attachments/assets/d48e0daa-d02e-4e4c-a0d0-4af3e6d1bcb6" />
+<img width="1062" height="590" alt="Screenshot 2026-05-05 150917" src="https://github.com/user-attachments/assets/ff571e1a-2ecd-4148-966c-15b6dd469f27" />
+<img width="932" height="576" alt="Screenshot 2026-05-05 150608" src="https://github.com/user-attachments/assets/bebf5d3e-554d-4603-afd4-cf36eca581bc" />
 
 *Built as Project 4 of an AI Engineering portfolio. Part of a progression from model fine-tuning → RAG systems → single agents → multi-agent orchestration.*
