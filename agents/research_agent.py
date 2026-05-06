@@ -7,13 +7,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-client = TavilyClient(api_key=os.getenv("TAVILY_API_KEY"))
+def get_tavily_client():
+    api_key = os.getenv("TAVILY_API_KEY")
+    if not api_key:
+        raise ValueError("TAVILY_API_KEY not found in environment variables. Please add it to your Space Secrets.")
+    return TavilyClient(api_key=api_key)
 
 def research_agent(state: ResearchState) -> ResearchState:
     """
     Reads:  topic
     Writes: search_results, current_step
     """
+    client = get_tavily_client()
     topic = state["topic"]
     
     # Run 3 targeted searches on the topic

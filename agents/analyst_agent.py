@@ -7,17 +7,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-llm = ChatGroq(
-    api_key=os.getenv("GROQ_API_KEY"),
-    model_name="llama-3.3-70b-versatile",
-    max_retries=3,
-)
+def get_llm():
+    api_key = os.getenv("GROQ_API_KEY")
+    if not api_key:
+        raise ValueError("GROQ_API_KEY not found in environment variables. Please add it to your Space Secrets.")
+    return ChatGroq(
+        api_key=api_key,
+        model_name="llama-3.3-70b-versatile",
+        max_retries=3,
+    )
 
 def analyst_agent(state: ResearchState) -> ResearchState:
     """
     Reads:  topic, search_results
     Writes: analysis, current_step
     """
+    llm = get_llm()
     topic = state["topic"]
     search_results = state["search_results"]
 

@@ -1,3 +1,15 @@
+---
+title: Multi-Agent Research Generator
+emoji: 🔬
+colorFrom: blue
+colorTo: indigo
+sdk: docker
+sdk_version: 1.44.1
+app_file: app.py
+pinned: false
+license: mit
+---
+
 # 🔬 Multi-Agent Research & Report Generator
 
 > Orchestrates multiple specialized AI agents to autonomously research, analyze, fact-check, and produce structured professional reports with cited sources.
@@ -119,7 +131,7 @@ Example:
 ## 🛠️ Tech Stack
 
 | Tool | Purpose | Why Free |
-|------|---------|---------|
+|------|---------|---------| 
 | LangGraph | Agent orchestration | Open source |
 | Groq API | LLM inference (Llama 3.3 70B) | Free tier, fastest inference |
 | Tavily API | Real-time web search | Free tier, 1000 searches/month |
@@ -148,7 +160,7 @@ venv\Scripts\activate  # Windows
 source venv/bin/activate  # Mac/Linux
 
 # Install dependencies
-pip install langgraph langchain langchain-groq tavily-python streamlit python-dotenv
+pip install -r requirements.txt
 
 # Configure environment
 cp .env.example .env
@@ -161,6 +173,8 @@ cp .env.example .env
 GROQ_API_KEY=your_groq_key_here
 TAVILY_API_KEY=your_tavily_key_here
 ```
+
+> **Hugging Face Space users:** Set `GROQ_API_KEY` and `TAVILY_API_KEY` in your Space's **Settings → Variables and Secrets** — do NOT commit a `.env` file.
 
 ### Run
 
@@ -187,11 +201,10 @@ multi_agent_research/
 │   └── research_graph.py      # LangGraph StateGraph + routing
 ├── state/
 │   └── research_state.py      # Shared state TypedDict
-├── app.py                     # Streamlit UI
+├── app.py                     # Streamlit UI (HF Space entrypoint)
 ├── main.py                    # Pipeline runner
-├── visualize_graph.py         # Architecture diagram generator
-├── .env                       # API keys (gitignored)
-├── .gitignore
+├── requirements.txt           # Python dependencies
+├── .env.example               # API key template
 └── README.md
 ```
 
@@ -201,7 +214,7 @@ multi_agent_research/
 
 | Metric | Value |
 |--------|-------|
-| Average report time | ~30 seconds |
+| Average report time | ~30 seconds - 1 min |
 | Tavily searches per run | 9 (3 queries × 3 results) |
 | Max revision cycles | 2 |
 | Token usage per run | ~8,000-11,000 tokens |
